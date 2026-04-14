@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Flight Search{% endblock %}
+{% block content %}
+<h2>Search Flights</h2>
+<form action="/search" method="get">
+    <label>Origin Airport:
+        <select name="origin" required>
+            <option value="">-- Select --</option>
+            {% for a in airports %}
+            <option value="{{ a.airport_code }}">{{ a.airport_code }} - {{ a.name }}</option>
+            {% endfor %}
+        </select>
+    </label><br><br>
+    <label>Destination Airport:
+        <select name="destination" required>
+            <option value="">-- Select --</option>
+            {% for a in airports %}
+            <option value="{{ a.airport_code }}">{{ a.airport_code }} - {{ a.name }}</option>
+            {% endfor %}
+        </select>
+    </label><br><br>
+    <label>Start Date:
+        <input type="date" name="start_date" required>
+    </label><br><br>
+    <label>End Date:
+        <input type="date" name="end_date" required>
+    </label><br><br>
+    <button type="submit">Search</button>
+</form>
+{% endblock %}

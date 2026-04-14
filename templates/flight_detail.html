@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Flight Detail{% endblock %}
+{% block content %}
+<p><a href="javascript:history.back()">Back to Results</a></p>
+
+{% if not flight %}
+<p>Flight not found.</p>
+{% else %}
+<h2>{{ flight.flight_number }} — {{ flight.airline_name }}</h2>
+<p>{{ flight.origin_code }} to {{ flight.dest_code }} | {{ flight.departure_date }} | Departure: {{ flight.departure_time }}</p>
+
+<h3>Seat Availability</h3>
+<table border="1" cellpadding="5">
+    <tr>
+        <th>Capacity</th>
+        <th>Booked Seats</th>
+        <th>Available Seats</th>
+    </tr>
+    <tr>
+        <td>{{ flight.capacity }}</td>
+        <td>{{ flight.booked_seats }}</td>
+        <td>{{ flight.available_seats }}</td>
+    </tr>
+</table>
+{% endif %}
+{% endblock %}
